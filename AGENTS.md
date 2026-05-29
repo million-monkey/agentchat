@@ -24,6 +24,31 @@ Project structure:
 
 ---
 
+## Key File Map
+
+### Backend
+
+| File | What it does |
+|---|---|
+| `backend/main.py` | FastAPI app — all HTTP routes, SSE streaming, CORS |
+| `backend/agent_runner.py` | `run_turn()` — hop chain orchestration, poll modes, queues |
+| `backend/session_manager.py` | Session CRUD, config/agents loading, batch saves, per-session locks |
+| `backend/prompt_builder.py` | System prompts, message history build, `response_looks_complete()` |
+| `backend/llm_client.py` | LLM provider routing (OpenRouter, Mistral, Google, modelrelay) |
+
+### Frontend
+
+| File | What it does |
+|---|---|
+| `frontend/state.js` | Global state object + `setState()` mutation logger |
+| `frontend/chat-ui.js` | Message send, slash commands, streaming controls |
+| `frontend/chat-render.js` | SSE event → DOM rendering, hop/pause UI, mention dropdown |
+| `frontend/session-ui.js` | Sidebar, session CRUD, agent roster management |
+| `frontend/sse-reader.js` | Raw SSE stream reader, pending-message queue |
+| `frontend/utils.js` | `abortStream()`, `escHtml()`, helpers |
+
+---
+
 ## Important Development Rules
 
 ### Respect Existing Architecture
@@ -56,6 +81,15 @@ The process:
 2. When an issue is visited, decide: fix it (→ TODO.md) or ignore it (→ DONE.md).
 3. When a TODO item is completed, move it to DONE.md as DONE/COMPLETED.
 4. When instructed, add newly discovered issues to REVIEW.md.
+
+### Git and GitHub
+
+* Repo: https://github.com/million-monkey/agentchat
+* Single `master` branch — no feature branches needed for local tool
+* Only commit when explicitly asked (default: do not commit)
+* Write concise commit messages in imperative mood
+* `.env` contains real credentials and is gitignored — never track or commit it
+* `sessions/`, `__pycache__/`, `.env` are all gitignored and excluded from the repo
 
 ---
 
