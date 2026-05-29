@@ -5,8 +5,8 @@
   "stream_responses": true,
   "log_requests": false,
   "log_responses": false,
-  "poll_throttle": 2000,
-  "poll_mode": "continuous",
+  "poll_throttle": 4000,
+  "poll_mode": "normal",
   "pause_for_user": true,
   "agent_prompt": "CONVERSATION RULES:\n- You may @mention another participant by name (e.g. @Sam, @Jane) if their specific expertise is genuinely relevant.\n- Only @mention someone when it truly adds value. Do NOT @mention others just to keep conversation going.\n- Keep your responses concise — under 150 words unless the topic genuinely requires more depth.\n- Stay in character at all times.\n- Never break character or refer to yourself as an AI.\n- Always write complete sentences. Do not trail off mid-thought.\n- Avoid exaggerated mannerisms, constant metaphors, or overly performative dialogue. Speak naturally, like a real person with specific interests rather than a caricature of them.",
   "user_avatar": "images/spy.svg",
@@ -34,12 +34,6 @@
     "mistral": {
       "base_url": "https://api.mistral.ai/v1/chat/completions",
       "api_key_env": "MISTRAL_API_KEY",
-      "timeout": 120
-    },
-    "gemini-ants": {
-      "base_url": "http://host.docker.internal:8001/v1/chat/completions",
-      "api_key_env": "MODELRELAY_API_KEY",
-      "stream_responses": false,
       "timeout": 120
     }
   }
