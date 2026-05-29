@@ -1,5 +1,7 @@
 # Environment
 .env
+config.json
+agents.json
 
 # Python
 __pycache__/
@@ -12,6 +14,12 @@ sessions/
 # OS
 .DS_Store
 Thumbs.db
+
+# Internal planning docs (keep local only)
+AGENTS.md
+DONE.md
+REVIEW.md
+TODO.md
 
 # IDE
 .vscode/
