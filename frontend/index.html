@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentChat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top bar -->
+<div id="topbar">
+  <div class="logo">agent<span>chat</span></div>
+  <div class="spacer"></div>
+  <div class="status-dot" id="status-dot"></div>
+  <div class="status-label" id="status-label">ready</div>
+</div>
+
+<!-- Main layout -->
+<div id="main">
+
+  <!-- Sidebar -->
+  <div id="sidebar">
+    <div id="sidebar-header">
+      <span class="label">Sessions</span>
+      <button id="new-session-btn" onclick="openNewSessionModal()">+ New</button>
+    </div>
+    <div id="session-list"></div>
+  </div>
+
+  <!-- Chat pane -->
+  <div id="chat-pane">
+    <!-- Agent bar -->
+    <div id="agent-bar">
+      <span id="agent-bar-placeholder" style="font-family:var(--mono);font-size:11px;color:var(--text3);">no session selected</span>
+    </div>
+
+    <!-- No session message -->
+    <div id="no-session-msg">
+      <div class="big">💬</div>
+      <p>Select a session or create a new one</p>
+    </div>
+
+    <!-- Messages (hidden until session loaded) -->
+    <div id="messages" style="display:none;"></div>
+
+    <!-- Input bar (hidden until session loaded) -->
+    <div id="input-bar" style="display:none;">
+      <div id="input-wrap">
+        <div id="mention-dropdown"></div>
+        <textarea id="msg-input" rows="1" placeholder="Type a message… use @Name to mention an agent" 
+          oninput="handleInputChange(this)" onkeydown="handleInputKeydown(event)"></textarea>
+        <button id="send-btn" onclick="sendMessage()">Send ↵</button>
+      </div>
+      <div id="input-hint">
+        <span>Enter</span> to send · <span>Shift+Enter</span> for new line · <span>@</span> to mention · <span>↑↓</span> history
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="state.js"></script>
+<script src="utils.js"></script>
+<script src="chat-render.js"></script>
+<script src="sse-reader.js"></script>
+<script src="session-ui.js"></script>
+<script src="chat-ui.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

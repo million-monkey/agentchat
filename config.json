@@ -1,0 +1,46 @@
+{
+  "hop_limit": 3,
+  "catch_up_message_count": 20,
+  "max_tokens_per_response": 1000,
+  "stream_responses": true,
+  "log_requests": false,
+  "log_responses": false,
+  "poll_throttle": 2000,
+  "poll_mode": "continuous",
+  "pause_for_user": true,
+  "agent_prompt": "CONVERSATION RULES:\n- You may @mention another participant by name (e.g. @Sam, @Jane) if their specific expertise is genuinely relevant.\n- Only @mention someone when it truly adds value. Do NOT @mention others just to keep conversation going.\n- Keep your responses concise — under 150 words unless the topic genuinely requires more depth.\n- Stay in character at all times.\n- Never break character or refer to yourself as an AI.\n- Always write complete sentences. Do not trail off mid-thought.\n- Avoid exaggerated mannerisms, constant metaphors, or overly performative dialogue. Speak naturally, like a real person with specific interests rather than a caricature of them.",
+  "user_avatar": "images/spy.svg",
+  "user_name": "Jake",
+  "providers": {
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1/chat/completions",
+      "api_key_env": "OPENROUTER_API_KEY",
+      "timeout": 120,
+      "extra_headers": {
+        "HTTP-Referer": "http://localhost:3000",
+        "X-Title": "AgentChat"
+      }
+    },
+    "modelrelay": {
+      "base_url": "http://host.docker.internal:7352/v1/chat/completions",
+      "api_key_env": "MODELRELAY_API_KEY",
+      "timeout": 120
+    },
+    "google": {
+      "base_url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+      "api_key_env": "GOOGLE_API_KEY",
+      "timeout": 120
+    },
+    "mistral": {
+      "base_url": "https://api.mistral.ai/v1/chat/completions",
+      "api_key_env": "MISTRAL_API_KEY",
+      "timeout": 120
+    },
+    "gemini-ants": {
+      "base_url": "http://host.docker.internal:8001/v1/chat/completions",
+      "api_key_env": "MODELRELAY_API_KEY",
+      "stream_responses": false,
+      "timeout": 120
+    }
+  }
+}

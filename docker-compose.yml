@@ -1,0 +1,31 @@
+networks:
+  ant-network:
+    external: true
+    name: ant-network
+
+services:
+  backend:
+    build: ./backend
+    networks:
+      - ant-network
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - ./sessions:/sessions
+      - ./config.json:/config.json
+      - ./agents.json:/agents.json
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  frontend:
+    image: nginx:alpine
+    networks:
+      - ant-network
+    ports:
+      - "3000:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html:ro
+      - ./frontend/images:/usr/share/nginx/html/images:ro
+    restart: unless-stopped
