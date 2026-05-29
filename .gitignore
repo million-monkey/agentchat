@@ -21,6 +21,9 @@ DONE.md
 REVIEW.md
 TODO.md
 
+# opencode configuration
+.opencode/
+
 # IDE
 .vscode/
 .idea/
